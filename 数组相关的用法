@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 一、===================创建数组的方法================
+      // 1. 利用  new 创建数组
+      var arr = new Array(1);
+      console.log(arr); //[]
+      var arr1 = new Array(2);
+      console.log(arr1); //[empty,empty]
+      var arrr = new Array("red", "pink");
+      console.log(arrr); //['red', 'pink']
+
+      // 2. 利用数组字面量创建数组 推荐
+      var arr2 = [];
+      var arr3 = [true, "123", [1, 2], { uname: "andy" }];
+
+      // 3. 如何获取数组里的数据？？ 索引号
+      console.log(arr3[3]); //{ uname: "andy" }
+      console.log(arr3[2][1]); //子数组【1，2】的2
+
+      // 4. 数组遍历 for
+      console.log("===============");
+      for (var i = 0; i < arr3.length; i++) {
+        console.log(arr3[i]);
+      }
+
+      // 二、===================检测是否为数组================
+      // (1) 你需要监测的值 instanceof Array 运算符 它可以用来检测是否为数组
+      console.log([] instanceof Array); //true
+      console.log({} instanceof Array); //false
+      // (2) Array.isArray(参数);  H5新增的方法  ie9以上版本支持
+      console.log(Array.isArray([])); //true
+      console.log(Array.isArray({})); //false
+
+      // (3) typeof ==> 适合用于判断基础数据类型
+      // 区分不开数组与对象
+      console.log(typeof []); //'object'
+      console.log(typeof {}); //'object'
+
+      // 三、===================数组push,shift,pop,unshift================
+      // 1. push() 在我们数组的末尾 添加一个或者多个数组元素   push  推
+      // 返回新数组的长度
+      var arr = ["pink", "red", "purple"];
+      console.log(arr.push("purple")); //4;
+      console.log(arr); //改变原数组，["pink", "red", "purple","purple"];
+      // 2. unshift 在我们数组的开头 添加一个或者多个数组元素
+      // 返回新数组的长度
+      console.log(arr.unshift("pink")); //4;
+      console.log(arr); //改变原数组，["pink","pink", "red", "purple"];
+
+      // 3. pop() 它可以删除数组的最后一个元素
+      arr.pop();
+      console.log(arr);
+      // 4. shift() 它可以删除数组的第一个元素
+      arr.shift();
+      console.log(arr);
+
+      // 四、==========================数组其他用法========================
+      // 1、翻转数组
+      var arr = [1, 2, 3, 4];
+      console.log(arr.reverse());
+      //   2、数组排序
+      var arr = [21, 4, 5, 7, 9, 55, 777];
+      console.log(
+        arr.sort(function (a, b) {
+          return a - b;
+        })
+      );
+      console.log(
+        arr.sort(function (a, b) {
+          return b - a;
+        })
+      );
+      //   3、数组
+      var students = [
+        { name: "Alex", grade: 88 },
+        { name: "larao", grade: 100 },
+        { name: "Deva", grade: 99 },
+        { name: "Eagle", grade: 68 },
+        { name: "Sam", grade: 89 },
+      ];
+      console.log(
+        students.sort(function (a, b) {
+          return a.grade - b.grade;
+        })
+      );
+      // 返回数组元素索引号方法  数组.indexOf(数组元素)  作用就是返回该数组元素的索引号 从前面开始查找
+      // 它只返回第一个满足条件的索引号
+      // 它如果在该数组里面找不到元素，则返回的是 -1
+      var arr = ["red", "green", "blue", "pink", "blue", "pink"];
+      console.log(arr.indexOf("red")); //0
+      // 返回数组元素索引号方法  lastIndexOf(数组元素)  作用就是返回该数组元素的索引号 从后面开始查找
+      console.log(arr.lastIndexOf("pink")); //5
+      // 数组转换为字符串
+      // 1. toString() 将我们的数组转换为字符串
+      var arr1 = ["pink", "red", "purple"];
+      console.log(arr1.toString());
+      // 2. arr.join(分隔符)
+      var arr2 = ["pink", "red", "purple"];
+      console.log(arr2.join());
+      console.log(arr2.join("|"));
+      // 数组连接:concat() 连接多个数组，返回一个新数组
+      var arr3 = ["pink", "green", "orange", "purple"];
+      var arr4 = ["pink", "blue"];
+      var arr5 = arr3.concat(arr4);
+      console.log(arr5);
+      // 数组截取:slice(begin, end) [begin, end) // 返回一个新数组
+      var arr6 = ["pink", "green", "orange", "purple"];
+      console.log(arr6.slice(0, 2));
+      // ⭐️splice(从第几个开始， 删除几个元素,'需要替换的元素')
+      // 方法通过删除或替换现有元素或者原地添加新的元素来修改数组,并以数组形式返回被修改的内容
+      var months = ["Jan", "March", "April", "June"];
+      //   console.log(months.splice(0, 2)); //["Jan", "March"]
+      //   console.log(months); //["April", "June"]
+
+      // 对原来数组有影响
+      console.log(months.splice(0, 1, "pink")); //[jan]
+      console.log(months);
+      //["pink",  "June"]
+
+      // ==============================================================================
+    </script>
+  </body>
+</html>
