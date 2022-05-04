@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 1、indexOf
+      // 字符串所有的方法都不会改变字符串本身
+      // 字符串对象  根据字符返回位置  str.indexOf('要查找的字符', [起始的位置])
+      var str = "改革春春吹满地，春天来了";
+      console.log(str.indexOf("春")); //2
+      console.log(str.indexOf("春", 3)); //3
+      //   找不到返回-1
+      console.log(str.indexOf("春11")); //-1
+
+      // 2、concat('字符串1','字符串2'....) 链接字符串
+      var str1 = "test";
+      console.log(str1.concat(str1, "test1", "test2", "test4")); //testtesttest1test2test4
+
+      // 3、substr('截取的起始位置', '截取几个字符');
+      var str2 = "改革春风吹满地";
+      console.log(str2.substr(2, 1)); //春
+      console.log(str2.substr(2)); //不写第二个参数=='截取几个字符',默认截取到最后--春风吹满地
+
+      // 4、slice(start, end); // start: 截取的起始位置 end: 截取的结束位置
+      // 包含开始的位置
+      var str3 = "改革春风吹满地";
+      console.log(str3.slice(2, 4)); //春风23，【包括开始，不包括结束】。
+
+      // 5、replace('被替换的字符', '替换为的字符')  替换字符 它只会替换第一个字符
+      var str4 = "andyandy";
+      console.log(str4.replace("a", "*")); //*ndyandy
+      // 6、有一个字符串 'abcoefoxyozzopp'  要求把里面所有的 o 替换为 *
+      var str5 = "abcoefoxyozzopp";
+      while (str5.indexOf("o") != -1) {
+        str5 = str5.replace("o", "*"); //注意要赋值给    str5
+      }
+      console.log(str5); //abc*ef*xy*zz*pp
+      //7、字符转换为数组 split('分隔符')    前面我们学过 join 把数组转换为字符串
+      var str6 = "red,pink,green";
+      console.log(str6.split()); //['red,pink,green']
+      console.log(str6.split(",")); //['red', 'pink', 'green']
+      var str7 = "red*pink*green";
+      console.log(str7.split("*")); //['red', 'pink', 'green']
+      //8、join数组转字符串
+      console.log(["red", "pink", "green"].join("*")); //red*pink*green
+
+      // 字符串的不可变性
+      var str = "andy";
+      console.log(str);
+      str = "red";
+      console.log(str);
+
+      // 9、因为我们字符串的不可变性，所以不要大量的拼接字符串
+      // var str = '';
+      // for (var i = 1; i <= 1000000000; i++) {
+      //     str += i;
+      // }
+      // console.log(str);
+
+      // 解决方案：转换为数组
+      var date = +new Date();
+      var str = "";
+      var arr = [];
+      for (var i = 0; i <= 10000000; i++) {
+        arr.push(1);
+      }
+      console.log(arr.join());
+      var date1 = +new Date();
+      console.log(date1 - date);
+    </script>
+  </body>
+</html>
