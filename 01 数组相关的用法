@@ -111,7 +111,7 @@
       var arr4 = ["pink", "blue"];
       var arr5 = arr3.concat(arr4);
       console.log(arr5);
-      // 数组截取:slice(begin, end) [begin, end) // 返回一个新数组
+      // 数组截取:slice(begin, end) // 返回一个新数组
       var arr6 = ["pink", "green", "orange", "purple"];
       console.log(arr6.slice(0, 2));
       // ⭐️splice(从第几个开始， 删除几个元素,'需要替换的元素')
